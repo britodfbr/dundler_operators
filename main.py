@@ -63,11 +63,55 @@ def run():
 
     o = mi.IncolumeDevices4()
     print("\nCorreção Iterrar sobre os dispositivos da lista")
-    e = []
+    l = []
     for dev in o:
         print(dev)
-        e.append(dev)
+        l.append(dev)
     print(f"{o.__class__.__name__}: {len(o)} dispositivos")    # losted devs again
+    print('\nAcrescentar elementos')
+    try:
+        o += l
+        print(f"{o.__class__.__name__}: {len(o)} dispositivos")
+    except TypeError as e:
+        print(f"Ops: {e}")
+
+    o = mi.IncolumeDevices5()
+    print('\nCorreção em Acrescentar lista de  elementos')
+    try:
+        o += l
+        print(f"{o.__class__.__name__}: {len(o)} dispositivos")
+        print(o)
+    except TypeError as e:
+        print(f"Ops: {e}")
+        raise
+
+    print('\nAcrescentar elemento str')
+    try:
+        o += "Teste"
+        print(o)
+        print(f"{o.__class__.__name__}: {len(o)} dispositivos")
+    except TypeError as e:
+        print(f"Ops: {e}")
+        raise
+
+    o = mi.IncolumeDevices6()
+    print('\nCorreção em Acrescentar elemento str')
+    try:
+        o += "Teste"
+        print(o)
+        print(f"{o.__class__.__name__}: {len(o)} dispositivos")
+    except TypeError as e:
+        print(f"Ops: {e}")
+
+    o = mi.IncolumeDevices7()
+    print('\nCorreção em Acrescentar elemento str')
+    try:
+        p = mi.IncolumeDevices7(l)
+        o += p
+        print(o)
+        print(f"{o.__class__.__name__}: {len(o)} dispositivos")
+    except TypeError as e:
+        print(f"Ops: {e}")
 
 
 if __name__ == "__main__":

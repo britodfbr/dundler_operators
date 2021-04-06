@@ -1,3 +1,5 @@
+from typing import Iterable
+
 class IncolumeDevices0:
     def __init__(self):
         self._devices = [
@@ -35,3 +37,32 @@ class IncolumeDevices4(IncolumeDevices3):
     def __iter__(self):
         while self._devices:
             yield self._devices.pop()
+
+
+class IncolumeDevices5(IncolumeDevices4):
+    def __add__(self, elem):
+        if isinstance(elem, list):
+            self._devices += elem
+
+        return self._devices
+
+
+class IncolumeDevices6(IncolumeDevices5):
+    def __add__(self, elem):
+        if isinstance(elem, str):
+            self._devices.append(elem)
+        return self._devices
+
+
+class IncolumeDevices7(IncolumeDevices6):
+    def __init__(self, l: list=None):
+        if not l:
+            super().__init__()
+        else:
+            self._devices = l
+    def __add__(self, elem):
+        if isinstance(elem, str):
+            self._devices.append(elem)
+        if isinstance(elem, IncolumeDevices0):
+            self._devices += elem._devices
+        return self._devices
